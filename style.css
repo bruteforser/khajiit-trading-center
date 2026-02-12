@@ -16,12 +16,6 @@
   font-display: swap;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 html {
   background: grey;
 }
@@ -30,9 +24,30 @@ body {
   display: grid;
   min-height: 100vh;
   font-family: "Ubuntu Sans Mono", monospace;
-  background: no-repeat center/200% url("assets/caravan.webp");
-  
+}
 
+h1, h2, h3, h4, h5, h6, p {
+  color: rgb(237, 0, 0);
+  text-shadow: 1px 1px 2px pink;
+}
+
+q {
+  font-weight: 700;
+  font-style: italic;
+  color: rgb(0, 229, 237);
+}
+
+.page-bg {
+  position: relative;
+}
+
+.page-bg::before {
+  content: "";
+  background: no-repeat center/200% url("assets/caravan.webp");
+  filter: blur(8px);
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
 }
 
 .pricing {
