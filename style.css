@@ -16,46 +16,134 @@
   font-display: swap;
 }
 
-html {
-  background: grey;
+:root {
+  --text-main: rgb(237, 0, 0);
+  --text-shadow: 1px 1px 2px pink;
+  --quote-color: rgb(0, 229, 237);
+  --card-bg: rgba(15, 15, 15, 0.6);
+  --card-border: rgba(255, 255, 255, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
 }
 
 body {
-  display: grid;
   min-height: 100vh;
+  background: #4d4d4d;
   font-family: "Ubuntu Sans Mono", monospace;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  color: rgb(237, 0, 0);
-  text-shadow: 1px 1px 2px pink;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--text-main);
+  text-shadow: var(--text-shadow);
+  margin: 0;
 }
 
 q {
   font-weight: 700;
   font-style: italic;
-  color: rgb(0, 229, 237);
+  color: var(--quote-color);
 }
 
 .page-bg {
   position: relative;
+  width: min(1100px, 100% - 2.5rem);
+  margin: 1.25rem auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 .page-bg::before {
   content: "";
-  background: no-repeat center/200% url("assets/caravan.webp");
-  filter: blur(8px);
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  inset: 0;
+  background-image: url("assets/caravan.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  filter: blur(5px);
+  transform: scale(1.04);
+  z-index: -2;
+}
+
+.page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
   z-index: -1;
+}
+
+#image-wrapper {
+  margin: 1rem 0 1.5rem;
+}
+
+#image-wrapper figure {
+  margin: 0;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#image-wrapper img {
+  display: block;
+  width: clamp(200px, 35vw, 320px);
+  border-radius: 10px;
+}
+
+.warez {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.ware {
+  padding: 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: var(--card-bg);
+  backdrop-filter: blur(2px);
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.ware:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  border-color: rgba(0, 229, 237, 0.65);
+}
+
+.ware h1 {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.ware img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
 }
 
 .pricing {
   display: flex;
-  flex-direction: row-reverse;
-  flex-flow: wrap;
-}
-
-.pricing * {
-  margin: 0 4px;
+  align-items: center;
+  gap: 0.35rem;
 }
