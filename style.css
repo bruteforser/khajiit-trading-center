@@ -17,8 +17,8 @@
 }
 
 :root {
-  --text-main: rgb(237, 0, 0);
-  --text-shadow: 1px 1px 2px pink;
+  --text-main: rgb(208, 4, 4);
+  --text-shadow: 1px 2px 1px rgb(5, 8, 95);
   --quote-color: rgb(0, 229, 237);
   --card-bg: rgba(15, 15, 15, 0.6);
   --card-border: rgba(255, 255, 255, 0.25);
@@ -136,7 +136,7 @@ q {
   text-transform: capitalize;
 }
 
-.ware img {
+.ware img:not(.coin) {
   width: 120px;
   height: 120px;
   object-fit: contain;
@@ -146,4 +146,10 @@ q {
   display: flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+.coin {
+  width: 40px;
+  height: auto;
+  filter: contrast(200%) brightness(110%);
 }
